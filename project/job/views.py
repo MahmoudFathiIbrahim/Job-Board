@@ -11,5 +11,7 @@ def job_list(request):
 
 def job_detail(request, id):
     job_d = Job.objects.get(id=id)
-    context = {'job': job_d}
+    min_salary = job_d.salary*12/1000
+    max_salary = job_d.max_salary*12/1000
+    context = {'job': job_d, 'min_salary': min_salary, 'max_salary': max_salary}
     return render(request, 'job/job_detail.html', context)
