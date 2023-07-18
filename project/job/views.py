@@ -1,11 +1,16 @@
 from django.shortcuts import render
 from .models import Job
+from django.core.paginator import Paginator
+
 # Create your views here.
 
 
 def job_list(request):
     job_l = Job.objects.all()
-    context = {'job_list': job_l}
+    paginator = Paginator(job_l, 1)  # show 1 job per page
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    context = {'job_list': page_obj}
     return render(request, 'job/job_list.html', context)
 
 
