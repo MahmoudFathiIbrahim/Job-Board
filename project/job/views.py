@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Job
 from django.core.paginator import Paginator
+from .forms import ApplyForm
+
 
 # Create your views here.
 
@@ -18,5 +20,15 @@ def job_detail(request, slug):
     job_d = Job.objects.get(slug=slug)
     min_salary = job_d.salary*12/1000
     max_salary = job_d.max_salary*12/1000
-    context = {'job': job_d, 'min_salary': min_salary, 'max_salary': max_salary}
+
+    # apply form
+    if request.method == 'POST':
+        dataform = ApplyForm(request.POST, request.FILES)  # request.FILES = to get files from the form like pdf files
+        if dataform.is_valid():
+            save = dataform.save(commit=False)
+            save.job_title = job_d
+            save.save()
+
+    context = {'job': job_d, 'min_salary': min_salary, 'max_salary': max_salary,
+               'form': ApplyForm}
     return render(request, 'job/job_detail.html', context)

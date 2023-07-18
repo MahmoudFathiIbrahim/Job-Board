@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "contact.apps.ContactConfig",
     "job.apps.JobConfig",
     "home.apps.HomeConfig",
+    "bootstrap4"
 
 ]
 
