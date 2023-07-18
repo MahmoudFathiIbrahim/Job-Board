@@ -5,5 +5,5 @@ app_name = 'job'  # it`s important to make namespace in main project urls file, 
 
 urlpatterns = [
     path('', views.job_list),
-    path('<int:id>', views.job_detail, name='job_detail'),
+    path('<str:slug>', views.job_detail, name='job_detail'),
 ]
