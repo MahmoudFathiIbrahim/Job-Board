@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 import datetime
 from django.utils.text import slugify
@@ -12,6 +13,7 @@ def image_upload(instance, file_name):
 
 
 class Job(models.Model):
+    owner = models.ForeignKey(User, related_name='job_owner', on_delete=models.CASCADE)
     job_type_choices = (('Full Time', 'Full Time'),
                         ('Part Time', 'Part Time'))
     title = models.CharField(max_length=150)
