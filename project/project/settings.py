@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     "contact.apps.ContactConfig",
     "job.apps.JobConfig",
     "home.apps.HomeConfig",
-    "bootstrap4"
+    "bootstrap4",
+    "phonenumber_field",
+    'django_filters',
 
 ]
 
@@ -130,3 +132,12 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# https://docs.djangoproject.com/en/4.2/topics/email/
+# Email settings for gmail
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # for backend email
+EMAIL_HOST = 'smtp.gmail.com'  # smtp for gmail
+EMAIL_HOST_USER = 'admen.uzer@gmail.com'  # my email
+EMAIL_HOST_PASSWORD = 'kgvpvtumfoqvpsgk'  # generate from app password in gmail account settings 2-step vefications
+EMAIL_USE_TLS = True  # protocol security
+EMAIL_PORT = '587'  # gmail port

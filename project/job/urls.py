@@ -4,7 +4,7 @@ from . import views
 app_name = 'job'  # it`s important to make namespace in main project urls file,  namespace = name in path function
 
 urlpatterns = [
-    path('', views.job_list),
+    path('', views.job_list, name='job_list'),
     path('add/', views.add_job, name='add_job'),
     path('<str:slug>', views.job_detail, name='job_detail'),
 ]

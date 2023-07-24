@@ -46,7 +46,7 @@ class Category(models.Model):
 
 
 class Apply(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, name='first_name', verbose_name='Name')
     email = models.EmailField(max_length=80)
     website = models.URLField()
     cv = models.FileField(upload_to='apply/%y/%m/%d')
@@ -55,5 +55,5 @@ class Apply(models.Model):
     created_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.first_name
 
