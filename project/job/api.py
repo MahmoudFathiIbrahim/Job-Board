@@ -44,7 +44,7 @@ def job_detail_api(request, id):
     return Response(context)
 
 
-class JobListApi(generics.ListAPIView):
+class JobListApi(generics.ListCreateAPIView):
     model = Job
     queryset = Job.objects.all()
     serializer_class = JobSerializer

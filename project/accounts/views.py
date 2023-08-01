@@ -16,22 +16,25 @@ def signup(request):
             password = dataform.cleaned_data['password1']  # get password from the form
             user = authenticate(username=username, password=password)  # check if this user in db
             login(request, user)
-            return redirect('/accounts/profile')
+            return redirect(reverse('jobs:job_list'))
         else:
             print('data is invalid')
     context = {'form': SignupForm}
     return render(request, 'accounts/signup.html', context)
 
 
-def profile(request):
-    prof = Profile.objects.get(user=request.user)  # request.user: to get the logged user
+def profile(request, slug=0):
+    if slug:
+        prof = Profile.objects.get(slug=slug)  # request.user: to get the logged user
+    else:
+        prof = Profile.objects.get(slug=request.user.profile.slug)
 
     context = {'profile': prof}
     return render(request, 'accounts/profile.html', context)
 
 
-def profile_edit(request):
-    prof = Profile.objects.get(user=request.user)
+def profile_edit(request, slug):
+    prof = Profile.objects.get(slug=slug)
     if request.method == 'POST':
         profile_form = ProfileForm(request.POST, request.FILES, instance=prof)
         user_form = UserForm(request.POST, instance=request.user)

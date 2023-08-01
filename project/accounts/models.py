@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 from phonenumber_field.modelfields import PhoneNumberField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -15,9 +16,15 @@ class Profile(models.Model):
     phone_number = PhoneNumberField(blank=True, region='EG')
     image = models.ImageField(upload_to='profile/%y/%m/%d', default='profile/ava3.webp')
     job_title = models.CharField(max_length=50, null=True, blank=True, default='Job Title')
+    slug = models.SlugField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.user.username)
+        super(Profile, self).save(*args, **kwargs)
 
     def __str__(self):
         return str(self.user)
+
 
 
 # https://simpleisbetterthancomplex.com/tutorial/2016/07/28/how-to-create-django-signals.html

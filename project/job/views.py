@@ -24,7 +24,7 @@ def job_list(request):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
-    context = {'job_list': page_obj, 'my_filter': my_filter}
+    context = {'job_list': page_obj, 'my_filter': my_filter, 'jobs': job_l}
     return render(request, 'job/job_list.html', context)
 
 

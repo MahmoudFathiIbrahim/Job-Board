@@ -38,17 +38,20 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "blog.apps.BlogConfig",
     "accounts",
     "contact.apps.ContactConfig",
     "job.apps.JobConfig",
     "home.apps.HomeConfig",
+    "blog.apps.BlogConfig",
+
     "bootstrap4",
     "phonenumber_field",
     'django_filters',
     'rest_framework',
 
 ]
+
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -73,6 +76,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'contact.context_processors.my_info',
             ],
         },
     },

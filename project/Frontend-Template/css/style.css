@@ -7260,6 +7260,8 @@ h6 {
 /* line 40, ../../Arafath/CL/December/235. Job board/HTML/scss/_blog_part.scss */
 .blog_part .single-home-blog .card-img-top {
   border-radius: 0px;
+  max-width: 300px%;
+  height: 365px;
 }
 
 /* line 43, ../../Arafath/CL/December/235. Job board/HTML/scss/_blog_part.scss */

@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>{{job_list|length}} Jobs Available</h3>
+                        <h3>{{jobs|length}} Jobs Available</h3>
                     </div>
                 </div>
             </div>
@@ -73,8 +73,8 @@
                             <div class="col-lg-12 col-md-12">
                                 <div class="single_jobs white-bg d-flex justify-content-between">
                                     <div class="jobs_left d-flex align-items-center">
-                                        <div class="thumb">
-<!--                                            <img src="{{job.image.url}}" alt="">-->
+                                        <div class="thumb" >
+                                            <img src="{{job.image.url}}" alt="" width="82px" height="82px" >
                                         </div>
                                         <div class="jobs_conetent">
                                             <a href="{% url 'jobs:job_detail' job.slug %}"><h4>{{job.title}}</h4></a>

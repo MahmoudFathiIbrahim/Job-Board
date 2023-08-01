@@ -1,7 +1,10 @@
 from django.conf import settings
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Info
 from django.core.mail import send_mail
+from django.template import RequestContext, Template
+
 
 
 # Create your views here.
@@ -23,3 +26,8 @@ def contact(request):
             fail_silently=False,
         )
     return render(request, 'contact/contact.html', context)
+
+
+
+
+

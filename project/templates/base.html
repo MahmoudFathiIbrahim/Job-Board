@@ -65,7 +65,7 @@
                                             </li>
                                             <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="blog.html">blog</a></li>
+                                                    <li><a href="{% url 'blog:blogs' %}">blog</a></li>
                                                     <li><a href="single-blog.html">single-blog</a></li>
                                                 </ul>
                                             </li>
@@ -84,7 +84,7 @@
                                                 <ul id="navigation_profile">
                                                  <li><a href="#">Profile <i class="ti-angle-down"></i></a>
                                                         <ul class="submenu">
-                                                            <li><a href="{% url 'accounts:profile' %}">View Profile</a></li>
+                                                            <li><a href="{% url 'accounts:profile' request.user.profile.slug %}">View Profile</a></li>
                                                             <li><a href="{% url 'logout' %}">Logout</a></li>
                                                         </ul>
                                                  </li>
@@ -93,7 +93,7 @@
                                         </div>
                                     </div>
 <!--                                        <div class="phone_num d-none d-xl-block">-->
-<!--                                            <a href="{% url 'accounts:profile' %}">My Profile</a>-->
+<!--                                            <a href="{% url 'accounts:profile' request.user.profile.slug %}">My Profile</a>-->
 <!--                                        </div>-->
 
                                     {% else %}
@@ -137,31 +137,31 @@
                                 </a>
                             </div>
                             <p>
-                                finloan@support.com <br>
-                                +10 873 672 6782 <br>
-                                600/D, Green road, NewYork
+                                {{info.email}} <br>
+                                {{info.phone_number}} <br>
+                                {{info.place}}
                             </p>
                             <div class="socail_links">
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="https://www.facebook.com/xenammm" target="_blank">
                                             <i class="ti-facebook"></i>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-google-plus"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
+<!--                                    <li>-->
+<!--                                        <a href="#">-->
+<!--                                            <i class="fa fa-google-plus"></i>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <a href="#">-->
+<!--                                            <i class="fa fa-twitter"></i>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <a href="#">-->
+<!--                                            <i class="fa fa-instagram"></i>-->
+<!--                                        </a>-->
                                     </li>
                                 </ul>
                             </div>

@@ -5,6 +5,6 @@ app_name = 'accounts'  # it`s important to make namespace in main project urls f
 
 urlpatterns = [
     path('signup', views.signup, name='signup'),
-    path('profile/', views.profile, name='profile'),
-    path('profile/edit', views.profile_edit, name='profile_edit'),
+    path('profile/<str:slug>', views.profile, name='profile'),
+    path('profile/<str:slug>/edit', views.profile_edit, name='profile_edit'),
 ]

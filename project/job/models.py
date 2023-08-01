@@ -26,7 +26,7 @@ class Job(models.Model):
     max_salary = models.DecimalField(default=0.00, decimal_places=2, max_digits=8)
     experience = models.IntegerField(default=1)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to=image_upload)  # 'photos/%y/%m/%d'
+    image = models.ImageField(upload_to=image_upload, default='profile/ava3.webp')  # 'photos/%y/%m/%d'
 
     slug = models.SlugField(null=True, blank=True)
 
