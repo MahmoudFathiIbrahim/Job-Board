@@ -59,3 +59,6 @@ def add_job(request):
 
     context = {'form': JobForm}
     return render(request, 'job/add_job.html', context)
+
+
+

@@ -1,10 +1,21 @@
 <!doctype html>
 {% extends 'base.html' %}
-{% load bootstrap4 %}
 {% block body %}
 
-    {% block header %}
-    {% endblock header %}
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        {% block head %}
+                        {% endblock head %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
 
     <div class="job_details_area">
         <div class="container">

@@ -1,9 +1,9 @@
 {% extends "base_generic.html" %}
 {% load bootstrap4 %}
 {% block content %}
-{% block header %}
+{% block head %}
   <h4>SignUp</h4>
-{% endblock header %}
+{% endblock head %}
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% bootstrap_form form%}

@@ -5,6 +5,8 @@ from PIL import Image
 
 from django.contrib.auth.models import User
 from django.core.files import File
+
+from django.urls import reverse
 from django.db import models
 import datetime
 from django.utils.text import slugify
@@ -58,9 +60,6 @@ def image_upload(instance, file_name):
 
 
 class Posts(models.Model):
-
-
-
     title = models.CharField(max_length=100)
     content = models.TextField()
     post_date = models.DateTimeField(auto_now=True)
@@ -68,6 +67,10 @@ class Posts(models.Model):
     image = models.ImageField(upload_to=image_upload, default='profile/ava3.webp')
     category = models.ForeignKey('BlogCategory', on_delete=models.CASCADE)
     slug = models.SlugField(null=True, blank=True)
+
+    def get_absolute_url(self):
+        # return f'/blog/{self.slug}'
+        return reverse('blog:post_detail', args=[self.slug])
 
     def save(self, commit=True, *args, **kwargs):
         self.slug = slugify(self.title)

@@ -1,0 +1,18 @@
+<!doctype html>
+
+                            <h3 class="widget_title">Recent Posts</h3>
+                            {% for post in l_posts%}
+                            <div class="media post_item">
+                                <img src="{{ post.image.url }}" alt="post" width="50px">
+                                <div class="media-body">
+                                    <a href="{% url 'blog:post_detail' post.slug %}">
+                                        <h3>{{post.title}}</h3>
+                                    </a>
+                                    <p>{{post.post_date|timesince}} ago</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+
+

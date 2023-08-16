@@ -1,0 +1,22 @@
+<!doctype html>
+
+
+
+
+
+                            <h4 class="widget_title">Recent Comments</h4>
+                            <ul class="list cat-list">
+                                {% for comment in l_comments%}
+                                <li>
+                                    <a href="{% url 'accounts:profile' comment.commenter.profile.slug %}" class="d-flex">
+                                        <h5>{{comment.commenter.first_name}}</h5>
+                                    </a>
+                                    <a href="#" class="d-flex">
+                                        <p>{{comment.body}}</p>
+                                    </a>
+
+                                </li>
+                                {% endfor %}
+
+                            </ul>
+

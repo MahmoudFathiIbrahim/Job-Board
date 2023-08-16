@@ -9,5 +9,5 @@ class PostFilter(django_filters.FilterSet):
 
     class Meta:
         model = Posts
-        fields = ['title', 'content', 'job_type', 'category', 'experience']
+        fields = ['title', 'content', 'category']
         # exclude = ['image', 'published_at', 'salary', 'max_salary', 'slug', 'vacancy']

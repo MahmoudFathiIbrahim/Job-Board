@@ -1,4 +1,10 @@
 {% extends 'base_generic.html' %}
+{% load static %}
+
+{% block head %}
+<h3>Profile</h3>
+{% endblock head %}
+
 {% block content %}
 
 <!--https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp-->
@@ -165,7 +171,11 @@
     </div>
   </div>
 </section>
+{%if request.user == profile.user%}
+
   <a href="{% url 'accounts:profile_edit' profile.slug %}">
       <button type="submit" id="edit-button" class="boxed-btn3 w-100">Edit</button>
   </a>
+
+{% endif %}
 {% endblock content %}

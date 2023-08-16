@@ -3,7 +3,7 @@
 {% load bootstrap4 %}
 
     {% block post_button %}
-        <a class="boxed-btn3" href="{% url 'jobs:add_job' %}">Post Job</a>
+        <a class="boxed-btn3" href="{% url 'blog:add_post' %}">New Post</a>
     {% endblock post_button %}
 
 {% block body %}
@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>Add New Job</h3>
+                        <h3>Add New Post</h3>
                     </div>
                 </div>
             </div>
@@ -23,18 +23,18 @@
     </div>
     <!--/ bradcam_area  -->
 
-
     <div class="job_details_area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
                     <div class="apply_job_form white-bg">
-                        <h4>Job Form</h4>
+                        <h4>Post Delete</h4>
                         <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
-                            {% bootstrap_form form%}
-                            <div class="submit_btn">
-                                <button class="boxed-btn3 w-100" type="submit">Post Now</button>
+                            <a class="" >do you sure, want to delete: {{object.title}}</a>
+                            <div class="submit_btn ml-8">
+                                <button class="genric-btn danger radius" type="submit">Delete Post</button>
+                                <a class="genric-btn link radius" href="{% url 'blog:post_detail' object.slug %}" >Cancel</a>
                             </div>
                         </form>
                     </div>

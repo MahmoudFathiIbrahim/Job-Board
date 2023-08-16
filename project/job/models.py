@@ -19,13 +19,16 @@ class Job(models.Model):
     title = models.CharField(max_length=150)
     # location
     job_type = models.CharField(max_length=30, choices=job_type_choices)
-    description = models.TextField(max_length=500)
+    description = models.TextField()
+    responsibility = models.TextField(null=True, blank=True)
+    qualifications = models.TextField(null=True, blank=True)
+    benefits = models.TextField(null=True, blank=True)
     published_at = models.DateTimeField(auto_now=True)
     vacancy = models.IntegerField(default=1)
     salary = models.DecimalField(default=0.00, decimal_places=2, max_digits=8)
     max_salary = models.DecimalField(default=0.00, decimal_places=2, max_digits=8)
     experience = models.IntegerField(default=1)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', related_name='jobs', on_delete=models.CASCADE)
     image = models.ImageField(upload_to=image_upload, default='profile/ava3.webp')  # 'photos/%y/%m/%d'
 
     slug = models.SlugField(null=True, blank=True)
