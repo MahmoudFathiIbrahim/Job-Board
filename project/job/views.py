@@ -80,6 +80,6 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Job
     template_name = 'job/job_confirm_delete.html'
-    success_url = '/job'
+    success_url = '/jobs'
 
 
