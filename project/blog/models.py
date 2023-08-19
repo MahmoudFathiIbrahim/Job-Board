@@ -83,7 +83,7 @@ class Posts(models.Model):
         #     output_size = (730, 365)
         #     img = img.resize(output_size, Image.LANCZOS)
         #     quality_val = 90
-        #     img.save(self.image.path, 'JPEG', quality=quality_val)
+        #     img.save(self.image.path, quality=quality_val)
 
     def __str__(self):
         return self.title

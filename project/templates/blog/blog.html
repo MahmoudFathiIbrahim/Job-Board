@@ -72,10 +72,9 @@
                                 <a class="d-inline-block" href="{% url 'blog:post_detail' post.slug %}">
                                     <h2>{{post.title}}</h2>
                                 </a>
-                                <p>{{post.content|slice:':50'}}</p>
+                                <p>{{post.content|slice:':50'}}...</p>
                                 <ul class="blog-info-link">
                                     <li><a href="{% url 'accounts:profile' post.author.profile.slug %}"><i class="fa fa-user"></i>{{post.author.first_name}}, {{post.category}}</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                 </ul>
                             </div>
                         </article>

@@ -58,7 +58,7 @@ def add_job(request):
             save = dataform.save(commit=False)
             save.owner = request.user
             save.save()
-            return redirect(reverse('jobs'))
+            return redirect(reverse('jobs:job_list'))
 
     context = {'form': JobForm}
     return render(request, 'job/add_job.html', context)

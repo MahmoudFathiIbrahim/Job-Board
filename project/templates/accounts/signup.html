@@ -4,10 +4,30 @@
 {% block head %}
   <h4>SignUp</h4>
 {% endblock head %}
+
+{% if form.errors %}
+            {% for error in form.errors %}
+                {{ error }}
+            {% endfor %}
+        {% endif %}
+
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {% bootstrap_form form%}
+
+
+
+        {% for field in form %}
+            {% bootstrap_field field %}
+            {{ field.errors.as_ul }}
+        {% endfor %}
+
     <input type="submit" value="SignUp" class="boxed-btn3 w-100">
+
+
+
   </form>
 
   {# Assumes you setup the password_reset view in your URLconf #}

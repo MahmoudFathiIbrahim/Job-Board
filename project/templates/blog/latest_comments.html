@@ -11,9 +11,11 @@
                                     <a href="{% url 'accounts:profile' comment.commenter.profile.slug %}" class="d-flex">
                                         <h5>{{comment.commenter.first_name}}</h5>
                                     </a>
-                                    <a href="#" class="d-flex">
-                                        <p>{{comment.body}}</p>
+                                    <a href="{% url 'blog:post_detail' comment.post.slug %}" class="d-flex">
+                                        <p>{{comment.body|slice:'50'}}</p>
                                     </a>
+                                    {% empty %}
+                                    <p>No Comments</p>
 
                                 </li>
                                 {% endfor %}

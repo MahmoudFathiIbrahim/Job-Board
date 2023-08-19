@@ -22,7 +22,7 @@
     {% csrf_token %}
     {% bootstrap_form form%}
     <input type="submit" value="login" class="boxed-btn3 w-100">
-    <input type="hidden" name="next" value="{% url 'jobs:job_list' %}">
+    <input type="hidden" name="next" value="{% url 'home:index' %}">
   </form>
 
   {# Assumes you setup the password_reset view in your URLconf #}

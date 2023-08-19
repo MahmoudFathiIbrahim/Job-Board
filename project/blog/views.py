@@ -19,8 +19,11 @@ from django.urls import reverse_lazy
 # @login_required
 def post_list(request):
     posts = Posts.objects.all()
-    test = posts
- 
+
+    comments = Comment.objects.filter(active=True)
+    # for comment, post in comments, posts:
+    #     if comment.post == post:
+    #
     category = BlogCategory.objects.all()
 
     my_filter = PostFilter(request.GET, queryset=posts)
@@ -34,11 +37,12 @@ def post_list(request):
     context = {'posts': page_obj,
                'filter': my_filter,
                'category': category,
+               'comments': comments,
                }
 
     return render(request, 'blog/blog.html', context)
 
-
+@login_required
 def post_detail(request, slug):
 
     post = get_object_or_404(Posts, slug=slug)
