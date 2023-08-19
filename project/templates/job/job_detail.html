@@ -29,6 +29,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
+                {%if request.user == job.owner%}
+                  <div class="button-group-area w-10 mb-3">
+                     <a class="genric-btn info radius" href="{% url 'jobs:edit_job' job.slug %}">Edit Job</a>
+                     <a class="genric-btn danger radius" href="{% url 'jobs:delete_job' job.slug %}" >Delete Job</a>
+                  </div>
+                {%endif%}
                     <div class="job_details_header">
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
@@ -39,7 +45,7 @@
                                     <a href="#"><h4>{{job.title}}</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i> California, USA</p>
+                                            <p> <i class="fa fa-map-marker"></i> {{job.location}}</p>
                                         </div>
                                         <div class="location">
                                             <p> <i class="fa fa-clock-o"></i> {{job.job_type}}</p>
@@ -89,7 +95,7 @@
                                 <li>Published on: <span>{{job.published_at|date:'d M, Y'}}</span></li>
                                 <li>Vacancy: <span>{{job.vacancy}} Position</span></li>
                                 <li>Salary: <span>{{min_salary|floatformat}}k - {{max_salary|floatformat}}k/y</span></li>
-                                <li>Location: <span>California, USA</span></li>
+                                <li>Location: <span>{{job.location}}</span></li>
                                 <li>Job Nature: <span> {{job.job_type}}</span></li>
                             </ul>
                         </div>

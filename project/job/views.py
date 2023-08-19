@@ -8,6 +8,9 @@ from django.core.paginator import Paginator
 from .forms import ApplyForm, JobForm
 from .filter import JobFilter
 
+from django.views.generic import CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # Create your views here.
 
@@ -60,5 +63,23 @@ def add_job(request):
     context = {'form': JobForm}
     return render(request, 'job/add_job.html', context)
 
+
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+    model = Job
+    form_class = JobForm
+    template_name = 'job/edit_job.html'
+
+    # form_class = PostCreateView
+    # success_url = reverse_lazy('blog:edit_post')
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
+
+class PostDeleteView(LoginRequiredMixin, DeleteView):
+    model = Job
+    template_name = 'job/job_confirm_delete.html'
+    success_url = '/job'
 
 

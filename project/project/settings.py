@@ -28,10 +28,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+CITIES_LIGHT_TRANSLATION_LANGUAGES = ['en', 'ar']
+CITIES_LIGHT_INCLUDE_COUNTRIES = ['EG']
 # Application definition
 
 INSTALLED_APPS = [
+    'cities_light',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -50,7 +52,6 @@ INSTALLED_APPS = [
     'rest_framework',
 
 ]
-
 
 
 MIDDLEWARE = [

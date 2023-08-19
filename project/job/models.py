@@ -1,7 +1,10 @@
 from django.contrib.auth.models import User
 from django.db import models
 import datetime
+
+from django.urls import reverse
 from django.utils.text import slugify
+from cities_light.models import City
 # Create your models here.
 
 
@@ -17,7 +20,7 @@ class Job(models.Model):
     job_type_choices = (('Full Time', 'Full Time'),
                         ('Part Time', 'Part Time'))
     title = models.CharField(max_length=150)
-    # location
+    location = models.ForeignKey(City, on_delete=models.PROTECT, null=True, blank=True)
     job_type = models.CharField(max_length=30, choices=job_type_choices)
     description = models.TextField()
     responsibility = models.TextField(null=True, blank=True)
@@ -32,6 +35,10 @@ class Job(models.Model):
     image = models.ImageField(upload_to=image_upload, default='profile/ava3.webp')  # 'photos/%y/%m/%d'
 
     slug = models.SlugField(null=True, blank=True)
+
+    def get_absolute_url(self):
+        # return f'/blog/{self.slug}'
+        return reverse('jobs:job_detail', args=[self.slug])
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
