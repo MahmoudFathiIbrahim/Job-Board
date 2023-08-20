@@ -29,7 +29,7 @@ urlpatterns = [
     path('jobs/', include('job.urls', namespace='jobs')),
     path('contact/', include('contact.urls', namespace='contact')),
     path('blog/', include('blog.urls', namespace='blog')),
-    path('home/', include('home.urls', namespace='home')),
+    path('', include('home.urls', namespace='home')),
 
     # API
     path('api-auth/', include('rest_framework.urls')),
