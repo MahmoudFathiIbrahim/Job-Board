@@ -27,17 +27,19 @@ def signup(request):
 
 @login_required
 def profile(request, slug=0):
-    user_posts = Posts.objects.filter(author=request.user)
+    
+    if slug:
+        prof = Profile.objects.get(slug=slug)  # request.user: to get the logged user
+    else:
+        prof = Profile.objects.get(slug=request.user.profile.slug)
+
+    user_posts = Posts.objects.filter(author=prof.user)
     paginator = Paginator(user_posts, 2)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
     comments = Comment.objects.filter(commenter=request.user)[0:5]
 
-    if slug:
-        prof = Profile.objects.get(slug=slug)  # request.user: to get the logged user
-    else:
-        prof = Profile.objects.get(slug=request.user.profile.slug)
 
     context = {
         'profile': prof,
