@@ -38,7 +38,7 @@ def profile(request, slug=0):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
-    comments = Comment.objects.filter(commenter=request.user)[0:5]
+    comments = Comment.objects.filter(commenter=prof.user)[0:5]
 
 
     context = {
